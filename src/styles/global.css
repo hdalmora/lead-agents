@@ -10,10 +10,10 @@
     --gray-line: #dcdde0;
     --shadow: #13131336;
     --text: #666666;
-    --text-highlight: #b3b9ff;
     --title: #2e384d;
     --red-failure: #e83f5b;
     --green-success: #4cd62b;
+    --blue-accent: #2980b9;
 }
 
 @media(max-width: 1080px) {
