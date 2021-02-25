@@ -1,4 +1,4 @@
-import { observable, action, computed, reaction } from "mobx";
+import { makeObservable, observable, action, computed } from "mobx";
 import { v4 as uuid } from 'uuid';
 import { createContext } from "react";
 
@@ -11,7 +11,7 @@ export interface Lead {
 
 class LeadStore {
     constructor() {
-      reaction(() => this.leads, _ => console.log(this.leads.length))
+      makeObservable(this)
     }
   
     @observable leads: Lead[] = [
@@ -22,6 +22,8 @@ class LeadStore {
       { id: '158', name: "Bar do Zé", address: 'Rua Presidente, 1500', isClient: false },
       { id: '895', name: "Lan House", address: 'Avenida da Uva, 73', isClient: true },
     ]
+
+    @observable filteredList: Lead[] = this.leads;
   
     @action createLead = (lead: Lead) => {
       this.leads.push({ ...lead, id: uuid() })
@@ -31,6 +33,16 @@ class LeadStore {
       this.leads = this.leads.filter(lead => lead.id !== id)
     }
   
+    @action
+    setFilteredListSearch = (search: string) => {
+      let matchesFilter = new RegExp(search, "i");
+
+      this.filteredList = this.leads.filter(lead => {
+        return matchesFilter.test(lead.name) || matchesFilter.test(lead.address);
+      });
+    }
+    
+
     @computed get info() {
       return {
         total: this.leads.length,
@@ -39,5 +51,6 @@ class LeadStore {
       }
     }
   }
-  
-  export default createContext(new LeadStore())
+
+  const store = new LeadStore();
+  export const LeadStoreCtx = createContext(store);

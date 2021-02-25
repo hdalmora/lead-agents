@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from "mobx-react-lite";
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom'
 import '../styles/global.css';
 import LeadsListPage from '../pages/LeadsListPage/lead-list-page';
@@ -29,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);

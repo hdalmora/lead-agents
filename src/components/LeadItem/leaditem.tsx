@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from "mobx-react-lite";
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import { Container, Row, TitleContainer, SubTextContainer, RoundButton, LocationPinContainer } from './styles';
@@ -10,7 +11,7 @@ type LeadItemProps = {
     isClient: boolean
   }
 
-const LeadItem = ({id, name, address, isClient}: LeadItemProps) => {
+export const LeadItem = ({id, name, address, isClient}: LeadItemProps) => {
     return (
         <Container>
 
@@ -39,4 +40,4 @@ const LeadItem = ({id, name, address, isClient}: LeadItemProps) => {
     );
 }
   
-export default LeadItem;
+export default observer(LeadItem);
