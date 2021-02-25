@@ -4,6 +4,7 @@ import CustomInputSearch from '../../components/CustomInputSearch/custom-input-s
 import LeadList from '../../components/LeadList/lead-list';
 
 const LeadListPage = () => {
+
     return (
         <div>
             <CustomInputSearch />

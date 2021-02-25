@@ -10,7 +10,8 @@ export const CustomInputSearch = () => {
     const leadStore = useContext(LeadStoreCtx);
 
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        leadStore.setFilteredListSearch(e.target.value);
+        leadStore.searchText = e.target.value;
+        leadStore.setFilteredListSearch();
     }
 
     return (
@@ -21,7 +22,7 @@ export const CustomInputSearch = () => {
                 </IconContext.Provider>
             </SearchIconContainer>
 
-            <input placeholder='Nome ou endereço' onChange={handleChangeInput}/>
+            <input value={leadStore.searchText} placeholder='Nome ou endereço' onChange={handleChangeInput}/>
         </Container>
     );
 }

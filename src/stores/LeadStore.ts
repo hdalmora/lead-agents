@@ -24,6 +24,7 @@ class LeadStore {
     ]
 
     @observable filteredList: Lead[] = this.leads;
+    @observable searchText: string = '';
   
     @action createLead = (lead: Lead) => {
       this.leads.push({ ...lead, id: uuid() })
@@ -34,8 +35,8 @@ class LeadStore {
     }
   
     @action
-    setFilteredListSearch = (search: string) => {
-      let matchesFilter = new RegExp(search, "i");
+    setFilteredListSearch = () => {
+      let matchesFilter = new RegExp(this.searchText, "i");
 
       this.filteredList = this.leads.filter(lead => {
         return matchesFilter.test(lead.name) || matchesFilter.test(lead.address);
