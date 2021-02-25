@@ -24,7 +24,30 @@ class LeadStore {
     ]
 
     @observable filteredList: Lead[] = this.leads;
+    
     @observable searchText: string = '';
+
+    @observable filterSelected = ''; 
+
+    @action
+    selectFilter(filter: string) {
+      this.filterSelected = filter === this.filterSelected ? '' : filter;
+      this.filterList();
+    }
+
+    @action 
+    filterList() {
+      this.searchText = '';
+
+      if(this.filterSelected === '') {
+        this.filteredList = this.leads;
+        return;
+      }
+
+      const isClient = this.filterSelected === 'clients' ? true : false;
+
+      this.filteredList = this.leads.filter(lead => lead.isClient === isClient);
+    }
   
     @action createLead = (lead: Lead) => {
       this.leads.push({ ...lead, id: uuid() })
@@ -41,6 +64,8 @@ class LeadStore {
   
     @action
     setFilteredListSearch = () => {
+      this.filterSelected = '';
+
       let matchesFilter = new RegExp(this.searchText, "i");
 
       this.filteredList = this.leads.filter(lead => {
