@@ -33,6 +33,11 @@ class LeadStore {
     @action deleteLead = (id: string) => {
       this.leads = this.leads.filter(lead => lead.id !== id)
     }
+
+    @action
+    setSearchText(searchText: string) {
+      this.searchText = searchText;
+    }
   
     @action
     setFilteredListSearch = () => {

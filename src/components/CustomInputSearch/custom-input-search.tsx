@@ -10,7 +10,7 @@ export const CustomInputSearch = () => {
     const leadStore = useContext(LeadStoreCtx);
 
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        leadStore.searchText = e.target.value;
+        leadStore.setSearchText(e.target.value);
         leadStore.setFilteredListSearch();
     }
 
