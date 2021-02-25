@@ -1,9 +1,10 @@
 import React from 'react';
+import LeadList from '../../components/LeadList/lead-list';
 
 const LeadListPage = () => {
     return (
         <div>
-            LEADS LIST
+            <LeadList />
         </div>
     );
 }
