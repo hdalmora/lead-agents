@@ -27,7 +27,14 @@ class LeadStore {
     
     @observable searchText: string = '';
 
-    @observable filterSelected = ''; 
+    @observable filterSelected = '';
+    
+    @observable leadMarkerIdSelected = '';
+
+    @action
+    setLeadMarkerSelected(id: string) {
+      this.leadMarkerIdSelected = id === this.leadMarkerIdSelected ? '' : id;
+    }
 
     @action
     selectFilter(filter: string) {
@@ -71,6 +78,11 @@ class LeadStore {
       this.filteredList = this.leads.filter(lead => {
         return matchesFilter.test(lead.name) || matchesFilter.test(lead.address);
       });
+    }
+
+    @computed get leadDataById() {
+      console.log('calleddd', this.leadMarkerIdSelected);
+      return this.leads.find(e => e.id === this.leadMarkerIdSelected);
     }
     
 

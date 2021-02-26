@@ -3,16 +3,17 @@ import { observer } from "mobx-react-lite";
 import CustomInputSearch from '../../components/CustomInputSearch/custom-input-search';
 import LeadList from '../../components/LeadList/lead-list';
 import FilterButton from '../../components/FilterButton/filter-button';
+import { Container } from './styles';
 
 const LeadListPage = () => {
 
     return (
-        <div>
+        <Container>
             <CustomInputSearch />
             <LeadList />
 
             <FilterButton />
-        </div>
+        </Container>
     );
 }
   

@@ -39,32 +39,6 @@ export const Row = styled.div`
     justify-content: space-between;
 `;
 
-export const RoundButton = styled.button`
-    border-radius: 32px;
-    background-color: var(--white);
-
-    width: 110px;
-    padding: 7px 0px;
-
-    font-weight: 600;
-    font-size: 0.8rem;
-    color: var(--text);
-
-    border: 1px solid var(--shadow);
-
-    &:hover {
-        background-color: var(--green-main-stone);
-        color: var(--white);
-
-        border: 1px solid transparent;
-        transition: all 0.3s linear;
-    }
-
-    &:focus {
-        outline: none;
-    }
-`;
-
 export const LocationPinContainer = styled.div`
     display: flex;
     align-items: center;

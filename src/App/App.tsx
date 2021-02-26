@@ -10,23 +10,20 @@ import { AppRoot, Container } from './styles';
 
 function App() {
   return (
-    <AppRoot>
-        <Router>
-          <SideBar />
-          <Container>
-            <div className="page">
-                <Switch>
-                    <Route exact path="/" component={LeadsListPage} />
-                    <Route exact path="/leads" component={LeadsListPage} />
-                    <Route exact path="/map" component={MapViewPage} />
-                    <Route path="/404" component={NotFoundPage} />
-                    <Redirect to="/404" />
-                </Switch>
-            </div>
-          </Container>
-      </Router>
-    </AppRoot>
-
+      <Router>
+        <SideBar />
+        <Container>
+          <div className="page">
+              <Switch>
+                  <Route exact path="/" component={LeadsListPage} />
+                  <Route exact path="/leads" component={LeadsListPage} />
+                  <Route exact path="/map" component={MapViewPage} />
+                  <Route path="/404" component={NotFoundPage} />
+                  <Redirect to="/404" />
+              </Switch>
+          </div>
+        </Container>
+    </Router>
   );
 }
 

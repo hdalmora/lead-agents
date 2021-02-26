@@ -5,11 +5,9 @@ export const AppRoot = styled.div`
 `;
 
 export const Container = styled.div`
-    height: 100vh;
     max-width: 992px;
     margin: 0 auto;
-    padding: 2.5rem 2rem 6rem 2rem;
-    margin-bottom: 35rem;
+    margin-bottom: 4rem;
 
     display: flex;
     flex-direction: column;

@@ -2,14 +2,15 @@ import React from 'react';
 import { observer } from "mobx-react-lite";
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { IconContext } from "react-icons";
-import { Container, Row, TitleContainer, SubTextContainer, RoundButton, LocationPinContainer } from './styles';
+import { Container, Row, TitleContainer, SubTextContainer, LocationPinContainer } from './styles';
+import CustomRoundButton from '../CustomRoundButton/custom-round-button';
 
 type LeadItemProps = {
-    id: string
-    name: string,
-    address: string,
-    isClient: boolean
-  }
+    id?: string,
+    name?: string,
+    address?: string,
+    isClient?: boolean
+}
 
 export const LeadItem = ({id, name, address, isClient}: LeadItemProps) => {
     return (
@@ -17,18 +18,18 @@ export const LeadItem = ({id, name, address, isClient}: LeadItemProps) => {
 
             <div>
                 <TitleContainer>
-                    {name}
+                    {name ?? ''}
                 </TitleContainer>
 
                 <SubTextContainer>
-                    {address}
+                    {address ?? ''}
                 </SubTextContainer>
             </div>
 
             <Row>
-                <RoundButton>
+                <CustomRoundButton>
                     Nova Tarefa
-                </RoundButton>
+                </CustomRoundButton>
 
                 <LocationPinContainer>
                     <IconContext.Provider value={{ color: isClient ? 'var(--green-main-stone)' : 'var(--blue-accent)',size: '1.5rem' }}>

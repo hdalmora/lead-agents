@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { observer } from "mobx-react-lite";
+import MapView from '../../components/MapView/map-view';
+import { LeadStoreCtx } from '../../stores/LeadStore';
+import { Container } from './styles';
+import MarkerCard from '../../components/MarkerCard/marker-card';
 
-const MapViewPage = () => {
+export const MapViewPage = () => {
+
+    const leadStore = useContext(LeadStoreCtx);
+
     return (
-        <div>
-            MAP
-        </div>
+        <>
+            <MapView />
+
+            {
+                leadStore.leadMarkerIdSelected !== '' && leadStore.leadDataById &&
+                    <MarkerCard 
+                        id={leadStore.leadDataById.id}
+                        name={leadStore.leadDataById.name}
+                        address={leadStore.leadDataById.address}
+                        isClient={leadStore.leadDataById.isClient}
+                    />
+            }
+        </>
     );
 }
   
-export default MapViewPage;
+export default observer(MapViewPage);
