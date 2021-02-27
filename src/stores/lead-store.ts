@@ -8,6 +8,8 @@ export interface Lead {
   name: string;
   address: string;
   isClient: boolean;
+  lat: number,
+  lng: number,
 }
 
 class LeadStore {
@@ -62,8 +64,8 @@ class LeadStore {
       this.filteredList = this.leads.filter(lead => lead.isClient === isClient);
     }
   
-    @action createLead = (lead: Lead) => {
-      this.leads.push({ ...lead, id: uuid() })
+    @action createLead = (newLead: Lead) => {
+      this.leads.push(newLead)
     }
   
     @action deleteLead = (id: string) => {

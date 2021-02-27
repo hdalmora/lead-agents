@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { IconContext } from "react-icons";
 import { Container, SearchIconContainer } from './styles';
-import { LeadStoreCtx } from '../../stores/LeadStore';
+import { LeadStoreCtx } from '../../stores/lead-store';
 
 export const CustomInputSearch = () => {
 

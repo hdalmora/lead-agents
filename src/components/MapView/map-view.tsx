@@ -1,32 +1,47 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { observer } from "mobx-react-lite";
 import GoogleMapReact, { ClickEventValue } from 'google-map-react';
 import MapMarker from '../MapMarker/map-marker';
 import { MapContainer } from './styles';
+import { NewLeadFormStoreCtx } from '../../stores/new-lead-form-store';
+import { LeadStoreCtx } from '../../stores/lead-store';
+import NewLeadForm from '../NewLeadForm/new-lead-form';
 
 const MapView = (props: any) => {
 
-  const handleMapClicked = (event: ClickEventValue) => {
-    console.log(event);
+  const newLeadFormStore = useContext(NewLeadFormStoreCtx);
+  const leadStore = useContext(LeadStoreCtx);
+
+  const handleMapClicked = (event: ClickEventValue) => {    
+    newLeadFormStore.openForm(event.lat, event.lng);
   }
 
   return (
       <MapContainer className="map-container">
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyDgd4kB30m-DWzkZcylrJLisKNofVir1Y0' }}
-        defaultCenter={{lat: -23.210801, lng: -46.857105 }}
-        defaultZoom={18}
-        onClick={handleMapClicked}
-      >
-        <MapMarker
-          id='123'
-          color='var(--green-main-stone)'
-          lat={11.0168}
-          lng={76.9558}
-          name="My Marker"
-        />
-      </GoogleMapReact>
+        <NewLeadForm />
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyDgd4kB30m-DWzkZcylrJLisKNofVir1Y0' }}
+          defaultCenter={{lat: -23.210801, lng: -46.857105 }}
+          defaultZoom={19}
+          onClick={handleMapClicked}
+        >
+        {
+          leadStore.leads.map(
+            lead => (
+                <MapMarker
+                key={lead.id!}
+                id={lead.id!}
+                color={lead.isClient ? 'var(--green-main-stone)' : 'var(--blue-accent)'}
+                lat={lead.lat}
+                lng={lead.lng}
+                name={lead.name}
+              />
+            )
+          )
+        }
+        </GoogleMapReact>
     </MapContainer>
   );
 }
 
-export default MapView;
+export default observer(MapView);

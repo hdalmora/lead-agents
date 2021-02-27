@@ -1,25 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { observer } from "mobx-react-lite";
 import LeadItem from '../../components/LeadItem/leaditem';
-import { LeadStoreCtx } from '../../stores/LeadStore';
-import { SnackbarStoreCtx } from '../../stores/snackbarStore';
+import { LeadStoreCtx } from '../../stores/lead-store';
+import { SnackbarStoreCtx } from '../../stores/snackbar-store';
 
 export const LeadList = () => {
 
     const leadStore = useContext(LeadStoreCtx);
-    const snackbarStore = useContext(SnackbarStoreCtx);
-
-    useEffect(() => {
-        leadStore.getLeads().then((success: boolean) => {
-            if(!success) {
-                snackbarStore.show(
-                    'Ocorreu um erro durante a requisição. Por favor, tente novamente.',
-                    'error',
-                    6000,
-                );
-            }
-        });
-    }, [leadStore, snackbarStore]);
 
     return (
         <>

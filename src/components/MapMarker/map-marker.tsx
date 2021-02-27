@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { MarkerContainer } from './styles';
-import { LeadStoreCtx } from '../../stores/LeadStore';
+import { LeadStoreCtx } from '../../stores/lead-store';
 
 type MapMarkerProps = {
   lat: number,
@@ -14,13 +14,16 @@ const MapMarker = ({lat, lng, id, name, color}: MapMarkerProps) => {
 
   const leadStore = useContext(LeadStoreCtx);
 
+  const handleMarkerClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.preventDefault();
+    leadStore.setLeadMarkerSelected(id);
+  }
+
   return (
     <MarkerContainer
       style={{ backgroundColor: color, cursor: 'pointer'}}
       title={name}
-      onClick={() => {
-        leadStore.setLeadMarkerSelected(id);
-      }}
+      onClick={handleMarkerClick}
     />
   );
 }; 

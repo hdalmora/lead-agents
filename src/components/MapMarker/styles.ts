@@ -12,8 +12,6 @@ export const MarkerContainer = styled.div`
     user-select: none;
     transform: translate(-50%, -50%);
     
-    &:hover {
-      z-index: 1;
-    }
+    z-index: 500;
 `;
 

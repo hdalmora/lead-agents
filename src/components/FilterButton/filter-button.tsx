@@ -5,7 +5,7 @@ import { IoFilterOutline } from 'react-icons/io5';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import { Container, FilterContainer, ClickFilter } from './styles';
-import { LeadStoreCtx } from '../../stores/LeadStore';
+import { LeadStoreCtx } from '../../stores/lead-store';
 
 export const FilterButton = () => {
 

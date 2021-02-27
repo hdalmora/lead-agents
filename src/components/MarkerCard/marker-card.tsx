@@ -6,14 +6,14 @@ type MarkerCardProps = {
     id?: string,
     name: string,
     address: string,
-    isClient: boolean
+    color: string
 }
 
-const MarkerCard = ({id, name, address, isClient}: MarkerCardProps) => {
+const MarkerCard = ({id, name, address, color}: MarkerCardProps) => {
     
     return (
         <Container>
-            <LeftContainer />
+            <LeftContainer style={{ backgroundColor: color }} />
 
             <Column>
                 <div>

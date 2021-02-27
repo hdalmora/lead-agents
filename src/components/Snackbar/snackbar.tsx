@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { observer } from "mobx-react-lite";
 import MuiSnackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-import { SnackbarStoreCtx } from '../../stores/snackbarStore';
+import { SnackbarStoreCtx } from '../../stores/snackbar-store';
 import { Container } from './styles';
 
 const Snackbar = () => {
