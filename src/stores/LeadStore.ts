@@ -1,6 +1,7 @@
 import { makeObservable, observable, action, computed } from "mobx";
 import { v4 as uuid } from 'uuid';
 import { createContext } from "react";
+import { getAllLeads } from '../services/leads-service';
 
 export interface Lead {
   id?: string;
@@ -14,14 +15,7 @@ class LeadStore {
       makeObservable(this)
     }
   
-    @observable leads: Lead[] = [
-      { id: '123', name: "Restaurante", address: 'Rua Armando, 458', isClient: true },
-      { id: '456', name: "Lavanderia", address: 'Avenida Pellizzari, 458', isClient: false },
-      { id: '789', name: "Oficina", address: 'Rua Penteado, 1589', isClient: true },
-      { id: '569', name: "Padaria", address: 'Rua Latorre, 80', isClient: false },
-      { id: '158', name: "Bar do Zé", address: 'Rua Presidente, 1500', isClient: false },
-      { id: '895', name: "Lan House", address: 'Avenida da Uva, 73', isClient: true },
-    ]
+    @observable leads: Lead[] = [];
 
     @observable filteredList: Lead[] = this.leads;
     
@@ -30,6 +24,17 @@ class LeadStore {
     @observable filterSelected = '';
     
     @observable leadMarkerIdSelected = '';
+
+    @action
+    async getLeads() {
+      try {
+        const leadsData = await getAllLeads(); 
+        this.leads = leadsData;
+
+      } catch(err) {
+          console.log(err);
+      }
+    }
 
     @action
     setLeadMarkerSelected(id: string) {

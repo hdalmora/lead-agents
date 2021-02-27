@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { observer } from "mobx-react-lite";
 import LeadItem from '../../components/LeadItem/leaditem';
 import { LeadStoreCtx } from '../../stores/LeadStore';
@@ -7,10 +7,24 @@ export const LeadList = () => {
 
     const leadStore = useContext(LeadStoreCtx);
 
+    useEffect(() => {
+        leadStore.getLeads();
+    }, [leadStore]);
+
     return (
         <>
             {
-                leadStore.filteredList.map(
+                leadStore.filteredList.length > 0 ? leadStore.filteredList.map(
+                    lead => (
+                        <LeadItem 
+                            key={lead.id} 
+                            id={lead.id!} 
+                            name={lead.name} 
+                            address={lead.address} 
+                            isClient={lead.isClient}
+                        />
+                    )
+                ) : leadStore.leads.map(
                     lead => (
                         <LeadItem 
                             key={lead.id} 
