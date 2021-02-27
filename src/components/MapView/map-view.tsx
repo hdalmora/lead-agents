@@ -4,8 +4,6 @@ import MapMarker from '../MapMarker/map-marker';
 import { MapContainer } from './styles';
 
 const MapView = (props: any) => {
-  const [center, setCenter] = useState({lat: 11.0168, lng: 76.9558 });
-  const [zoom, setZoom] = useState(11);
 
   const handleMapClicked = (event: ClickEventValue) => {
     console.log(event);
@@ -15,8 +13,8 @@ const MapView = (props: any) => {
       <MapContainer className="map-container">
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDgd4kB30m-DWzkZcylrJLisKNofVir1Y0' }}
-        defaultCenter={center}
-        defaultZoom={zoom}
+        defaultCenter={{lat: -23.210801, lng: -46.857105 }}
+        defaultZoom={18}
         onClick={handleMapClicked}
       >
         <MapMarker

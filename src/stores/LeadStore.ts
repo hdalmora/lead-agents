@@ -26,14 +26,15 @@ class LeadStore {
     @observable leadMarkerIdSelected = '';
 
     @action
-    async getLeads() {
+    async getLeads(): Promise<boolean> {
       try {
         const leadsData = await getAllLeads(); 
         this.leads = leadsData;
 
       } catch(err) {
-          console.log(err);
+        return false;
       }
+      return true;
     }
 
     @action

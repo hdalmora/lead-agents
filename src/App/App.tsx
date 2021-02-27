@@ -8,6 +8,7 @@ import MapViewPage from '../pages/MapViewPage/map-view-page';
 import NotFoundPage from '../pages/NotFoundPage/not-found-page';
 import SideBar from '../components/SideBar/sidebar';
 import { Container } from './styles';
+import Snackbar from '../components/Snackbar/snackbar';
 
 axios.defaults.baseURL = `http://localhost:3000/api/v1`;
 
@@ -27,8 +28,9 @@ axios.interceptors.response.use(
 function App() {
   return (
       <Router>
-        <SideBar />
         <Container>
+          <SideBar />
+          <Snackbar />
           <div className="page">
               <Switch>
                   <Route exact path="/" component={LeadsListPage} />
