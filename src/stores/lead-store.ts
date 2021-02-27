@@ -1,5 +1,4 @@
 import { makeObservable, observable, action, computed } from "mobx";
-import { v4 as uuid } from 'uuid';
 import { createContext } from "react";
 import { getAllLeads } from '../services/leads-service';
 

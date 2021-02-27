@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { observer } from "mobx-react-lite";
 import MapView from '../../components/MapView/map-view';
 import { LeadStoreCtx } from '../../stores/lead-store';
-import { Container } from './styles';
 import MarkerCard from '../../components/MarkerCard/marker-card';
 
 export const MapViewPage = () => {

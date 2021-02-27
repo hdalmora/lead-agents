@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { observer } from "mobx-react-lite";
 import LeadItem from '../../components/LeadItem/leaditem';
 import { LeadStoreCtx } from '../../stores/lead-store';
-import { SnackbarStoreCtx } from '../../stores/snackbar-store';
 
 export const LeadList = () => {
 
