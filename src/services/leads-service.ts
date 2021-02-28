@@ -38,3 +38,15 @@ export const deleteLeadById = async (leadId: string) => {
         throw new CustomError();
     }
 };
+
+export const updateLead = async (body: Lead) => {
+
+    try {
+        const response = await axios.patch(`/leads/${body.id}`, body);
+;        return response.data.lead;
+    } catch (err) {
+        const CustomError = ErrorHandler(err.status);
+
+        throw new CustomError();
+    }
+};

@@ -1,6 +1,10 @@
 import { makeObservable, observable, action, computed } from "mobx";
 import { createContext } from "react";
-import { getAllLeads, deleteLeadById } from '../services/leads-service';
+import { 
+  getAllLeads, 
+  deleteLeadById, 
+  updateLead 
+} from '../services/leads-service';
 
 export interface Lead {
   id?: string;
@@ -63,6 +67,18 @@ class LeadStore {
     }
 
     @action
+    async updateLead(leadDataToUpdate: Lead) {
+      try {
+
+        await updateLead(leadDataToUpdate);
+        this.updateLeadLocally(leadDataToUpdate);
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    @action
     setLeadMarkerSelected(id: string, forceSelection = false) {
       const isSameSelection =  id === this.leadMarkerIdSelected;
 
@@ -91,6 +107,12 @@ class LeadStore {
   
     @action createLeadLocally = (newLead: Lead) => {
       this.leads.push(newLead)
+    }
+
+    @action updateLeadLocally = (leadToUpdate: Lead) => {
+      this.leads[
+        this.leads.findIndex(lead => lead.id === leadToUpdate.id)
+      ] = leadToUpdate;
     }
   
     @action deleteLeadLocally = (id: string) => {

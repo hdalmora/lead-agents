@@ -76,3 +76,6 @@ export const Row = styled.div`
     width: 100%
 `;
 
+export const ClientCheckContainer = styled.div`
+    text-align-last: center;
+`;

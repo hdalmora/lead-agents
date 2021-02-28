@@ -18,6 +18,9 @@ export const MapViewPage = () => {
                         id={leadStore.leadDataById.id}
                         name={leadStore.leadDataById.name}
                         address={leadStore.leadDataById.address}
+                        isClient={leadStore.leadDataById.isClient}
+                        lat={leadStore.leadDataById.lat}
+                        lng={leadStore.leadDataById.lng}
                         color={leadStore.leadDataById.isClient ? 'var(--green-main-stone)' : 'var(--blue-accent)'}
                     />
             }

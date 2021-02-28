@@ -28,11 +28,13 @@ type MarkerCardProps = {
     id?: string,
     name: string,
     address: string,
+    lat: number,
+    lng: number,
     isClient: boolean,
     color: string
 }
 
-const MarkerCard = ({id, name, address, color, isClient}: MarkerCardProps) => {
+const MarkerCard = ({id, name, address, lat, lng, color, isClient}: MarkerCardProps) => {
 
     const [open, setOpen] = React.useState(false);
 
@@ -47,6 +49,30 @@ const MarkerCard = ({id, name, address, color, isClient}: MarkerCardProps) => {
     const leadStore = useContext(LeadStoreCtx);
     const snackbarStore = useContext(SnackbarStoreCtx);
 
+    const handleUpdateClientType = async () => {
+        const updated = await leadStore.updateLead({
+            id,
+            name,
+            address,
+            lat,
+            lng,
+            isClient: !isClient
+        });
+
+        if(updated) {
+            snackbarStore.show(
+                `Este Pin agora é um ${!isClient ? 'Cliente' : 'Lead'}!`,
+                'success',
+                6000,
+            );
+        } else {
+            snackbarStore.show(
+                'Ocorreu um erro ao alterar este Pin. Por favor, tente novamente.',
+                'error',
+                6000,
+            );
+        }
+    };
 
     const handleDeletePin = async () => {
         const deleted = await leadStore.deleteLead(id!);
@@ -83,6 +109,20 @@ const MarkerCard = ({id, name, address, color, isClient}: MarkerCardProps) => {
                             {address ?? ''}
                         </SubTextContainer>
                     </div>
+
+                    <ClientCheckContainer>
+                        <SubTextContainer>
+                            É cliente?
+                        </SubTextContainer>
+
+                        <Checkbox
+                            checked={isClient}
+                            onChange={handleUpdateClientType}
+                            color="primary"
+                            inputProps={{ 'aria-label': 'primary checkbox' }}
+                        />
+                    </ClientCheckContainer>
+                </Row>
 
                 <Row>
                     <CustomRoundButton>
