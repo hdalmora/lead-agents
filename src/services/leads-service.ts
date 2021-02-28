@@ -19,7 +19,8 @@ export const getAllLeads = async () => {
 export const createLead = async (body: Lead) => {
 
     try {
-        await axios.post('/leads', body);
+        const response = await axios.post('/leads', body);
+;        return response.data.newLead;
     } catch (err) {
         const CustomError = ErrorHandler(err.status);
 

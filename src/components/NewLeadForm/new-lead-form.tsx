@@ -10,6 +10,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import { CircularProgress } from '@material-ui/core';
+
 import { LeadStoreCtx } from '../../stores/lead-store';
 import { SnackbarStoreCtx } from '../../stores/snackbar-store';
 import { NewLeadFormStoreCtx } from '../../stores/new-lead-form-store';
@@ -98,12 +100,23 @@ const NewLeadForm = () => {
                 />
                 </DialogContent>
                 <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                    Cancelar
-                </Button>
-                <Button onClick={handleCreateNewLead} color="primary">
-                    Criar
-                </Button>
+
+                {
+                    !newLeadFormStore.isLoading &&
+                        <Button onClick={handleClose} color="primary">
+                            Cancelar
+                        </Button>
+                }
+
+                {
+                    newLeadFormStore.isLoading ?
+                        <CircularProgress size={25} />
+                    :
+                    <Button onClick={handleCreateNewLead} color="primary">
+                        Criar
+                    </Button>
+                }
+
                 </DialogActions>
             </Dialog>
         </Container>

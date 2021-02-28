@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { observer } from "mobx-react-lite";
+
 import { MarkerContainer } from './styles';
 import { LeadStoreCtx } from '../../stores/lead-store';
 
@@ -21,11 +23,15 @@ const MapMarker = ({lat, lng, id, name, color}: MapMarkerProps) => {
 
   return (
     <MarkerContainer
-      style={{ backgroundColor: color, cursor: 'pointer'}}
+      style={{ 
+        backgroundColor: color, 
+        cursor: 'pointer', 
+        borderColor: leadStore.leadMarkerIdSelected === id ? '#f9ca24' : '#fff'
+      }}
       title={name}
       onClick={handleMarkerClick}
     />
   );
 }; 
 
-export default MapMarker;
+export default observer(MapMarker);

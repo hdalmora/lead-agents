@@ -88,7 +88,6 @@ class LeadStore {
     }
 
     @computed get leadDataById() {
-      console.log('calleddd', this.leadMarkerIdSelected);
       return this.leads.find(e => e.id === this.leadMarkerIdSelected);
     }
     
