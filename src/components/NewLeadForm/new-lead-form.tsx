@@ -42,7 +42,8 @@ const NewLeadForm = () => {
     }
 
     const addLeadLocally = (newLead: Lead) => {
-        leadStore.createLead(newLead);
+        leadStore.createLeadLocally(newLead);
+        leadStore.setLeadMarkerSelected(newLead.id!);
     }
 
     const handleCreateNewLead = async () => {

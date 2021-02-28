@@ -27,3 +27,14 @@ export const createLead = async (body: Lead) => {
         throw new CustomError();
     }
 };
+
+export const deleteLeadById = async (leadId: string) => {
+
+    try {
+        await axios.delete(`/leads/${leadId}`);
+    } catch (err) {
+        const CustomError = ErrorHandler(err.status);
+
+        throw new CustomError();
+    }
+};

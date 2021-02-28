@@ -14,6 +14,7 @@ const SideBar = () => {
 
     const handleMapIconClick = () => {
         leadStore.setMapCenter({ lat: -23.210801, lng: -46.857105 })
+        leadStore.setLeadMarkerSelected('');
     }
     
     return (

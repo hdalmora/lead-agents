@@ -22,7 +22,7 @@ export const LeadItem = ({id, name, address, lat, lng, isClient}: LeadItemProps)
 
     const handleMapIconClick = () => {
         leadStore.setMapCenter({ lat, lng })
-        leadStore.setLeadMarkerSelected(id!);
+        leadStore.setLeadMarkerSelected(id!, true);
     }
 
     return (

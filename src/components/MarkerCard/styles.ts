@@ -42,6 +42,7 @@ export const Column = styled.div`
     flex-direction: column;
     justify-content: space-between;
     padding: 10px;
+    width: 100%;
 `;
 
 export const LeftContainer = styled.div`
@@ -61,3 +62,17 @@ export const SubTextContainer = styled.p`
     color: var(--text);
     font-size: 0.8rem;
 `;
+
+export const DeleteIconContainer = styled.div`
+    cursor: pointer;
+    align-self: center;
+    padding-right: 15px;
+`;
+
+export const Row = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%
+`;
+

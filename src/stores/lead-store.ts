@@ -1,6 +1,6 @@
 import { makeObservable, observable, action, computed } from "mobx";
 import { createContext } from "react";
-import { getAllLeads } from '../services/leads-service';
+import { getAllLeads, deleteLeadById } from '../services/leads-service';
 
 export interface Lead {
   id?: string;
@@ -51,8 +51,22 @@ class LeadStore {
     }
 
     @action
-    setLeadMarkerSelected(id: string) {
-      this.leadMarkerIdSelected = id === this.leadMarkerIdSelected ? '' : id;
+    async deleteLead(leadId: string) {
+      try {
+
+        await deleteLeadById(leadId);
+        this.deleteLeadLocally(leadId);
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    @action
+    setLeadMarkerSelected(id: string, forceSelection = false) {
+      const isSameSelection =  id === this.leadMarkerIdSelected;
+
+      this.leadMarkerIdSelected = forceSelection ? id : isSameSelection ? '' : id;
     }
 
     @action
@@ -75,11 +89,11 @@ class LeadStore {
       this.filteredList = this.leads.filter(lead => lead.isClient === isClient);
     }
   
-    @action createLead = (newLead: Lead) => {
+    @action createLeadLocally = (newLead: Lead) => {
       this.leads.push(newLead)
     }
   
-    @action deleteLead = (id: string) => {
+    @action deleteLeadLocally = (id: string) => {
       this.leads = this.leads.filter(lead => lead.id !== id)
     }
 

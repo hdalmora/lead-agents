@@ -1,35 +1,118 @@
-import React from 'react';
-import { Container, LeftContainer, Column, TitleContainer, SubTextContainer } from './styles';
+import React, { useContext } from 'react';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { IconContext } from "react-icons";
+
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Checkbox from '@material-ui/core/Checkbox';
+
+import { 
+    Container, 
+    LeftContainer, 
+    Column, 
+    TitleContainer, 
+    SubTextContainer, 
+    DeleteIconContainer, 
+    Row, 
+    ClientCheckContainer 
+} from './styles';
 import CustomRoundButton from '../CustomRoundButton/custom-round-button';
+import { LeadStoreCtx } from '../../stores/lead-store';
+import { SnackbarStoreCtx } from '../../stores/snackbar-store';
 
 type MarkerCardProps = {
     id?: string,
     name: string,
     address: string,
+    isClient: boolean,
     color: string
 }
 
-const MarkerCard = ({id, name, address, color}: MarkerCardProps) => {
-    
+const MarkerCard = ({id, name, address, color, isClient}: MarkerCardProps) => {
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+
+    const leadStore = useContext(LeadStoreCtx);
+    const snackbarStore = useContext(SnackbarStoreCtx);
+
+
+    const handleDeletePin = async () => {
+        const deleted = await leadStore.deleteLead(id!);
+
+        if(deleted) {
+            handleClose();
+
+            snackbarStore.show(
+                'O Pin foi deletado com sucesso!',
+                'success',
+                6000,
+            );
+        } else {
+            snackbarStore.show(
+                'Ocorreu um erro ao deletar este Pin. Por favor, tente novamente.',
+                'error',
+                6000,
+            );
+        }
+    }
+
     return (
         <Container>
             <LeftContainer style={{ backgroundColor: color }} />
 
             <Column>
-                <div>
-                    <TitleContainer>
-                        {name ?? ''}
-                    </TitleContainer>
+                <Row>
+                    <div>
+                        <TitleContainer>
+                            {name ?? ''}
+                        </TitleContainer>
 
-                    <SubTextContainer>
-                        {address ?? ''}
-                    </SubTextContainer>
-                </div>
+                        <SubTextContainer>
+                            {address ?? ''}
+                        </SubTextContainer>
+                    </div>
 
-                <CustomRoundButton>
-                    Nova Tarefa
-                </CustomRoundButton>
+                <Row>
+                    <CustomRoundButton>
+                        Nova Tarefa
+                    </CustomRoundButton>
+
+                    <DeleteIconContainer onClick={handleClickOpen}>
+                        <IconContext.Provider value={{ size: '1.5rem' }}>
+                            <RiDeleteBin6Line />
+                        </IconContext.Provider>
+                    </DeleteIconContainer>
+                </Row>
             </Column>
+
+                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Deletar Pin</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText>
+                        Você tem certeza que deseja deletar o Pin "{name}" ?.
+                    </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Não
+                    </Button>
+                    <Button onClick={handleDeletePin} color="primary">
+                        Deletar
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Container>
     );
 }
