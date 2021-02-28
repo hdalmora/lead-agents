@@ -31,6 +31,9 @@ class NewLeadFormStore {
     @observable
     lng: number = 0;
 
+    @observable
+    isLoading: boolean = false;
+
     @action
     async createNewLead(): Promise<CreateLeadResponse> {
         if(this.name.length < 5)
@@ -46,6 +49,8 @@ class NewLeadFormStore {
             };
 
         try {
+            this.isLoading = true;
+
             const lead: Lead = {
                 name: this.name,
                 address: this.address,
@@ -54,13 +59,15 @@ class NewLeadFormStore {
                 isClient: this.isClient
             };
 
-            await createLead(lead);
+            const newLeadData = await createLead(lead);
 
+            this.isLoading = false;
             return {
                 message: 'Lead/Cliente criado com sucesso!',
-                newLead: lead
+                newLead: newLeadData
             };
         } catch (err) {
+            this.isLoading = false;
             return {
                 message: 'Ocorreu um erro na criação do Lead/Cliente. Por favor, tente novamente.',
                 newLead: undefined

@@ -21,7 +21,7 @@ const MapView = (props: any) => {
         <NewLeadForm />
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyDgd4kB30m-DWzkZcylrJLisKNofVir1Y0' }}
-          defaultCenter={{lat: -23.210801, lng: -46.857105 }}
+          defaultCenter={leadStore.mapCenter}
           defaultZoom={19}
           onClick={handleMapClicked}
         >

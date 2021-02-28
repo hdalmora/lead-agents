@@ -11,6 +11,11 @@ export interface Lead {
   lng: number,
 }
 
+export interface MapCoordenates {
+  lat: number;
+  lng: number;
+}
+
 class LeadStore {
     constructor() {
       makeObservable(this)
@@ -18,13 +23,20 @@ class LeadStore {
   
     @observable leads: Lead[] = [];
 
-    @observable filteredList: Lead[] = this.leads;
+    @observable filteredList: Lead[] = [];
     
     @observable searchText: string = '';
 
-    @observable filterSelected = '';
+    @observable filterSelected: string = '';
     
-    @observable leadMarkerIdSelected = '';
+    @observable leadMarkerIdSelected: string = '';
+
+    @observable mapCenter: MapCoordenates = {lat: -23.210801, lng: -46.857105 };
+
+    @action
+    setMapCenter(mapCenter: MapCoordenates) {
+      this.mapCenter = mapCenter;
+    }
 
     @action
     async getLeads(): Promise<boolean> {

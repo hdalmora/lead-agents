@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { observer } from "mobx-react-lite";
 import LeadItem from '../../components/LeadItem/leaditem';
 import { LeadStoreCtx } from '../../stores/lead-store';
+import { MdLibraryAdd } from 'react-icons/md';
 
 export const LeadList = () => {
 
@@ -17,6 +18,8 @@ export const LeadList = () => {
                             id={lead.id!} 
                             name={lead.name} 
                             address={lead.address} 
+                            lat={lead.lat}
+                            lng={lead.lng}
                             isClient={lead.isClient}
                         />
                     )
@@ -27,6 +30,8 @@ export const LeadList = () => {
                             id={lead.id!} 
                             name={lead.name} 
                             address={lead.address} 
+                            lat={lead.lat}
+                            lng={lead.lng}
                             isClient={lead.isClient}
                         />
                     )
