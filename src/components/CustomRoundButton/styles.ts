@@ -17,6 +17,8 @@ export const Container = styled.div`
 
     cursor: pointer;
 
+    z-index: 200;
+
     &:hover {
         background-color: var(--green-main-stone);
         color: var(--white);

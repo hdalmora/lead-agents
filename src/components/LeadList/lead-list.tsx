@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { observer } from "mobx-react-lite";
 import LeadItem from '../../components/LeadItem/leaditem';
 import { LeadStoreCtx } from '../../stores/lead-store';
-import { MdLibraryAdd } from 'react-icons/md';
 
 export const LeadList = () => {
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { observer } from "mobx-react-lite";
 import { Link } from 'react-router-dom'
+import { observer } from "mobx-react-lite";
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import { Container, Row, TitleContainer, SubTextContainer, LocationPinContainer } from './styles';
@@ -25,24 +25,39 @@ export const LeadItem = ({id, name, address, lat, lng, isClient}: LeadItemProps)
         leadStore.setLeadMarkerSelected(id!, true);
     }
 
+    const handleSelectLeadForInfo = () => {
+        leadStore.setInfoSelected({
+            id,
+            name,
+            address,
+            lat,
+            lng,
+            isClient
+        });
+    }
+
     return (
         <Container>
-            <div>
-                <TitleContainer>
-                    {name ?? ''}
-                </TitleContainer>
+            <Link to={`/leads/${id}`}>
+                <div className="info-container" onClick={handleSelectLeadForInfo}>
+                    <div>
+                        <TitleContainer>
+                            {name ?? ''}
+                        </TitleContainer>
 
-                <SubTextContainer>
-                    {address ?? ''}
-                </SubTextContainer>
-            </div>
+                        <SubTextContainer>
+                            {address ?? ''}
+                        </SubTextContainer>
+                    </div>
+                </div>
+            </Link>
 
             <Row>
                 <CustomRoundButton>
                     Nova Tarefa
                 </CustomRoundButton>
 
-                <div onClick={handleMapIconClick}>
+                <div className="location-button" onClick={handleMapIconClick}>
                     <Link to='map'>
                         <LocationPinContainer>
                             <IconContext.Provider value={{ color: isClient ? 'var(--green-main-stone)' : 'var(--blue-accent)',size: '1.5rem' }}>
@@ -53,6 +68,7 @@ export const LeadItem = ({id, name, address, lat, lng, isClient}: LeadItemProps)
                 </div>
             </Row>
         </Container>
+
     );
 }
   

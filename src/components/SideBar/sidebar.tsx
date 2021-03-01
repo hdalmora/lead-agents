@@ -20,7 +20,7 @@ const SideBar = () => {
     return (
         <Container>
             <ActionsContainer>
-                <Link to='leads'>
+                <Link to='/leads'>
                     <ItemContainer>
                         <IconContext.Provider value={{ color: ['', '/', '/leads'].includes(location.pathname) ? 'green' : 'gray', size: '2.5rem' }}>
                             <MdViewList />
@@ -29,7 +29,7 @@ const SideBar = () => {
                 </Link>
 
                 <div onClick={handleMapIconClick}>
-                    <Link to='map'>
+                    <Link to='/map'>
                         <ItemContainer>
                             <IconContext.Provider value={{ color: ['/map'].includes(location.pathname) ? 'green' : 'gray', size: '2.5rem' }}>
                                 <IoMapSharp />

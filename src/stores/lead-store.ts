@@ -7,10 +7,10 @@ import {
 } from '../services/leads-service';
 
 export interface Lead {
-  id?: string;
-  name: string;
-  address: string;
-  isClient: boolean;
+  id?: string,
+  name: string,
+  address: string,
+  isClient: boolean,
   lat: number,
   lng: number,
 }
@@ -37,9 +37,23 @@ class LeadStore {
 
     @observable mapCenter: MapCoordenates = {lat: -23.210801, lng: -46.857105 };
 
+    @observable infoSelected: Lead = {
+      id: '',
+      name: '',
+      address: '',
+      isClient: false,
+      lat: 0,
+      lng: 0,
+    };
+
     @action
     setMapCenter(mapCenter: MapCoordenates) {
       this.mapCenter = mapCenter;
+    }
+
+    @action
+    setInfoSelected(lead: Lead) {
+      this.infoSelected = lead;
     }
 
     @action
@@ -137,15 +151,6 @@ class LeadStore {
 
     @computed get leadDataById() {
       return this.leads.find(e => e.id === this.leadMarkerIdSelected);
-    }
-    
-
-    @computed get info() {
-      return {
-        total: this.leads.length,
-        isClient: this.leads.filter(lead => lead.isClient).length,
-        isLead: this.leads.filter(lead => !lead.isClient).length
-      }
     }
   }
 

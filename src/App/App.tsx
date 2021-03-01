@@ -6,6 +6,7 @@ import '../styles/global.css';
 import LeadsListPage from '../pages/LeadsListPage/lead-list-page';
 import MapViewPage from '../pages/MapViewPage/map-view-page';
 import NotFoundPage from '../pages/NotFoundPage/not-found-page';
+import InfoPage from '../pages/InfoPage/info-page';
 import SideBar from '../components/SideBar/sidebar';
 import { Container } from './styles';
 import Snackbar from '../components/Snackbar/snackbar';
@@ -57,6 +58,7 @@ function App() {
                   <Route exact path="/" component={LeadsListPage} />
                   <Route exact path="/leads" component={LeadsListPage} />
                   <Route exact path="/map" component={MapViewPage} />
+                  <Route exact path="/leads/:id" component={InfoPage} />
                   <Route path="/404" component={NotFoundPage} />
                   <Redirect to="/404" />
               </Switch>

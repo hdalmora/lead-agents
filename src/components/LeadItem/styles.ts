@@ -18,6 +18,16 @@ export const Container = styled.div`
 
     cursor: pointer;
 
+    .info-container {
+        position: absolute;
+        height: 135px;
+        width: 780px;
+    }
+
+    .location-button {
+        z-index: 200;
+    }
+
     &:hover {
         box-shadow: 0px 2px 14px var(--text);
         transition: box-shadow 0.3s linear;
@@ -51,6 +61,8 @@ export const LocationPinContainer = styled.div`
     height: 36px;
     border: 1px solid var(--shadow);
     border-radius: 64px;
+
+    z-index: 200;
 
     cursor: pointer;
 
