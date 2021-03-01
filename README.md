@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <br>
+  Lead Agents
+  <br>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center">Uma Prova de Conceito com o intuito de simular um aplicativo voltado à prospecção de novos Leads/Clientes para agentes de negócios através de Geolocalização, Rotas e Gerenciamento de ativos.</h4>
 
-## Available Scripts
+<p align="center">
+  <a href="https://badgen.net/badge/Typescript/4.1/orange">
+    <img src="https://badgen.net/badge/Typescript/4.1/orange"
+         alt="Typescript">
+  </a>
+  <a href="https://badgen.net/badge/mobx/6.1/blue"><img src="https://badgen.net/badge/mobx/6.1/blue"></a>
+  <a href="https://badgen.net/badge/axios/21.1/blue">
+      <img src="https://badgen.net/badge/axios/21.1/blue">
+  </a>
+  <a href="https://img.shields.io/badge/styled--components-5.2-yellow">
+    <img src="https://img.shields.io/badge/styled--components-5.2-yellow">
+  </a>
+</p>
 
-In the project directory, you can run:
+</br>
 
+# Inicialização do projeto
+
+No diretório do projeto, você pode rodar os comandos:
+
+### `yarn install`
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Assim, você irá rodar o app em modo de desenvolvimento local:
+Abra [http://localhost:3006](http://localhost:3006) para navegar a aplicação.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Backend
+O seguinte repositório contém a API desenvolvida em NodeJs, a qual irá prover o CRUD para gerenciamento de Leads e Clientes em nossa aplicação:
+https://github.com/hdalmora/lead-agents-api
 
-### `yarn test`
+# Imagens do Protótipo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Desktop
+![screenshot](https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/desktop/desktop-ss1.png)
+![screenshot](https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/desktop/desktop-ss2.png)
+![screenshot](https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/desktop/desktop-ss3.png)
+![screenshot](https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/desktop/desktop-ss4.png)
+![screenshot](https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/desktop/desktop-ss5.png)
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Mobile (Responsivo)
+<img src="https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/mobile/mobile-ss1.png" alt="SS 1" width="300"/> <img src="https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/mobile/mobile-ss2.png" alt="SS 2" width="300"/> <img src="https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/mobile/mobile-ss3.png" alt="SS 3" width="300"/> <img src="https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/mobile/mobile-ss4.png" alt="SS 4" width="300"/> <img src="https://raw.githubusercontent.com/hdalmora/lead-agents/main/project-images/mobile/mobile-ss5.png" alt="SS 5" width="300"/>
