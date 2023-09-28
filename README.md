@@ -4,7 +4,7 @@
   <br>
 </h1>
 
-<h4 align="center">A Proof of Concept with the aim of simulating an application aimed at prospecting new Leads/Customers for business agents through Geolocation, Routes and Asset Management.</h4>
+<h4 align="center">A Proof of Concept aimed at prospecting new Leads/Customers for business agents through Geolocation, Routes and Asset Management.</h4>
 
 <p align="center">
   <a href="https://badgen.net/badge/Typescript/4.1/orange">
